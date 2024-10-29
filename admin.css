@@ -1,0 +1,419 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Navbar Styles */
+.nav {
+    background-color: #34495e; /* Màu nền navbar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+}
+
+.navbar .item-nav a {
+    color: #fff; /* Màu chữ navbar */
+    padding: 14px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .item-nav a:hover {
+    background-color: #2c3e50; /* Màu hover navbar */
+}
+
+.navbar .navbarbrand {
+    font-weight: bold;
+    font-size: 20px;
+    color: #fff;
+    margin-right: 20px;
+}
+
+.navbar .info a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.navbar .info a img.logout-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+/* Content Styles */
+.content {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.alert {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #e74c3c;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Form Styles */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="file"]:focus,
+.form-group select:focus {
+    border-color: #3498db;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn_add, .btn_reset {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn_add {
+    background-color: #27ae60;
+    color: #fff;
+}
+
+.btn_add:hover {
+    background-color: #2ecc71;
+}
+
+.btn_reset {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.btn_reset:hover {
+    background-color: #c0392b;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+table th {
+    background-color: #ecf0f1;
+    font-weight: bold;
+    color: #34495e; /* Màu tiêu đề bảng */
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+    background-color: #ecf0f1;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Product List Specific Styles */
+.product-list td img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.product-list .btn-edit, .product-list .btn-delete {
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.product-list .btn-edit {
+    background-color: #27ae60;
+}
+
+.product-list .btn-delete {
+    background-color: #c0392b;
+}
+
+.product-list .btn-edit:hover {
+    background-color: #2ecc71;
+}
+
+.product-list .btn-delete:hover {
+    background-color: #e74c3c;
+}
+
+/* Add Category Form Styles */
+.add-category {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.add-category input[type="text"] {
+    padding: 10px;
+    width: 250px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.add-category button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #27ae60;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.add-category button:hover {
+    background-color: #2ecc71;
+}
+
+/* Order Management Styles */
+.content table th,
+.content table td {
+    text-align: left;
+    padding: 12px 15px;
+}
+
+.content table th {
+    background-color: #ecf0f1;
+    font-weight: bold;
+    color: #34495e; /* Màu tiêu đề bảng */
+}
+
+.content table td {
+    border-bottom: 1px solid #ddd;
+}
+
+.content table tbody tr:hover {
+    background-color: #ecf0f1;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Add New Button Styles */
+.btn-add-new {
+    padding: 12px 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.btn-add-new:hover {
+    background-color: #2980b9;
+}
+
+.product-list-container .add-product {
+    display: flex;
+    align-items: center;
+}
+
+.product-list-container .add-product input[type="text"] {
+    padding: 10px;
+    width: 200px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.product-list-container .add-product button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.product-list-container .add-product button:hover {
+    background-color: #45a049;
+}
+
+/* Additional Styles for admin.php */
+/* Đoạn CSS mới bổ sung cho admin.php */
+/* Đảm bảo sử dụng phía dưới các định dạng hiện có */
+
+
+/* Order Details Styles */
+.order-details-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-details-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.order-details-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.order-details-container table th, 
+.order-details-container table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.order-details-container table th {
+    background-color: #ecf0f1;
+    font-weight: bold;
+    color: #34495e; /* Màu tiêu đề bảng */
+}
+
+.order-details-container table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.order-details-container table tbody tr:hover {
+    background-color: #ecf0f1;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.order-details-container .btn-back {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.order-details-container .btn-back:hover {
+    background-color: #2980b9;
+}
+
+h1 {
+    text-align: center;
+    color: #444;
+    font-weight: 300;
+}
+
+.filter-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filter-container label {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.filter-container select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.chart-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+canvas {
+    display: block;
+    max-width: 100%;
+}

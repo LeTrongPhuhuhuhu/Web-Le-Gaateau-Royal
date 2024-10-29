@@ -1,0 +1,967 @@
+:root {
+    color: #009393;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+    box-sizing: border-box;
+    
+    color: #002c3e;
+}
+body{
+    background-color: #f7f8f3;
+}
+html {
+    font-size: 17px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6px;
+    overflow-x: hidden;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+    width: 100%; /* Chiều rộng tối đa */
+    justify-content: center; /* Căn giữa các phần tử trong thẻ ul */
+}
+
+ul li {
+    margin-right: 20px;
+    padding: 0 15px; /* padding chỉ cần cần áp dụng cho phần chiều ngang */
+    position: relative; /* Tạo không gian cho phần ngang phía dưới */
+}
+
+ul li a {
+    color: #002c3e; /* Màu chữ mặc định */
+    position: relative; /* Tạo không gian cho phần ngang phía dưới */
+    text-decoration: none; /* Loại bỏ gạch chân mặc định */
+    transition: color 0.3s ease; /* Hiệu ứng màu khi hover */
+}
+
+ul li a:hover {
+    color: #002c3e; /* Màu chữ khi hover */
+}
+
+ul li a::after {
+    content: ''; /* Thêm phần tử giả để tạo thanh ngang */
+    display: block;
+    width: 0;
+    height: 2px; /* Chiều cao của thanh ngang */
+    background-color: #002c3e; /* Màu của thanh ngang */
+    position: absolute;
+    bottom: -2px; /* Khoảng cách của thanh ngang so với chữ */
+    left: 0;
+    transition: width 0.3s ease; /* Hiệu ứng thay đổi chiều dài */
+}
+
+ul li a:hover::after {
+    width: 100%; /* Chiều dài thanh ngang khi hover */
+}
+
+header {
+position: fixed;   
+ top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: 0 8px 16px rgb(138, 138, 138);
+    flex-direction: column; /* Sắp xếp theo chiều dọc */
+    align-items: center; /* Căn giữa theo chiều ngang */
+    justify-content: center; /* Căn giữa theo chiều dọc */
+    padding: 5px 9%;
+    background-color: #f7f8f3; /* Màu nền cho header */
+}
+
+.navbar-logo {
+    margin-bottom: 20px; /* Khoảng cách giữa logo và thẻ ul */
+}
+
+.navbar-logo img {
+    width: 550px; /* Tăng kích thước logo */
+}
+
+
+/* Product Filters */
+.product-filters {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.category-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-filter label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.category-filter select {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s;
+}
+
+.category-filter select:hover,
+.category-filter select:focus {
+    border-color: #333;
+}
+
+.category-filter button {
+    padding: 5px 20px;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.category-filter button:hover {
+    background-color: #555;
+}
+
+.category-filter button:active {
+    transform: scale(0.98);
+}
+
+/* Horizontal Navigation for Categories */
+/* Category Navigation Bar */
+.category-nav {
+    display: flex;
+    justify-content: flex-start; /* Để căn về lề trái */
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    margin-top: 145px;
+    position: relative;
+}
+
+.category-nav a {
+    text-decoration: none;
+    color: #2c3e50;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-nav a.active {
+    color: #e66022e9;
+    font-weight: bold;
+}
+
+.category-nav .separator {
+    color: #bdc3c7;
+}
+
+/* Hiệu ứng khi hover */
+.category-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1.2px;
+    background-color: #000000;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.category-nav a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.category-nav a.active {
+    color: #e67e22;
+    font-weight: bold;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f7f8f3;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-17px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-details {
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.product-details h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.product-details .price {
+    font-size: 16px;
+    color: #e67e22;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.pagination a {
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination a.active {
+    background-color: #333;
+    color: #fff;
+    pointer-events: none;
+}
+
+/* Style for the video container */
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 150px); /* Adjust this if needed */
+    padding: 0; /* Remove any padding */
+    background-color: #f8f9fa; /* Optional: Background color */
+    margin-top: 140px;
+}
+
+/* Style for the video itself */
+.intro-video {
+    width: 100vw; /* Full viewport width */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 100%; /* Full height without exceeding */
+    border: none; /* Remove any borders */
+    object-fit: cover; /* Cover the container without stretching */
+    margin: 0; /* No margins */
+}
+
+@media (max-width: 768px) {
+    .video-container {
+        height: auto; /* Adjust height for smaller screens */
+    }
+    .intro-video {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
+.product-filters{
+    margin-top: 150px;
+}
+
+.product-filters {
+    display: flex;
+    justify-content: flex-start; /* Đưa phần tử về phía trái */
+    align-items: center;
+    margin-bottom: 20px;
+    padding-left: 20px; /* Thêm padding bên trái để tạo khoảng cách với lề trái của trang */
+}
+
+.category-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-filter label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.category-filter select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.category-filter button {
+    padding: 8px 16px;
+    background-color: #009393;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.category-filter button:hover {
+    background-color:  #026c6c;
+}
+
+
+ /* Import Google Fonts API with custom settings */
+ @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap');
+
+ /* Apply custom font settings */
+ .material-symbols-outlined {
+   font-family: 'Material Symbols Outlined', sans-serif;
+   font-variation-settings:
+     'FILL' 0,
+     'wght' 400,
+     'GRAD' 0,
+     'opsz' 24;
+ }/* Footer Styling */
+ 
+
+/* Our Story Section */
+.our-story {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background: #f7f8f3;
+}
+
+.our-story-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    width: 100%;
+    gap: 30px;
+    align-items: center;
+    text-align: left;
+}
+
+.our-story-text {
+    flex: 1;
+    padding: 20px;
+}
+
+.our-story-text h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.our-story-text p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+}
+
+.our-story-image {
+    flex: 1;
+}
+
+.our-story-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .our-story-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .our-story-text {
+        padding: 0;
+    }
+
+    .our-story-text h2 {
+        font-size: 2rem;
+    }
+
+    .our-story-text p {
+        font-size: 1rem;
+    }
+
+    .our-story-image img {
+        margin-top: 20px;
+    }
+}
+.breadcrumb{
+    margin-top: 110px;
+}
+.product-detail {
+    max-width: 1000px; /* Tăng kích thước container sản phẩm */
+    margin: 20px auto;
+    background-color: #f7f8f3;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: flex-start; /* Căn phần nội dung bắt đầu từ đầu hàng */
+    margin-top: 20px;
+}
+
+.product-image {
+    flex: 1;
+    text-align: center;
+    margin-right: 30px; /* Khoảng cách giữa hình ảnh và thông tin sản phẩm */
+}
+
+.product-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-info {
+    flex: 1;
+}
+
+.product-info h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 22px;
+    color: #f7444e;
+    margin-bottom: 20px;
+}
+
+.description {
+    margin-bottom: 20px;
+}
+
+.description h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.description p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.quantity-controls {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.quantity-button {
+    font-size: 20px;
+    padding: 8px 12px;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px; /* Bo tròn nút tăng giảm số lượng */
+}
+
+.quantity-button:hover {
+    background-color: #ccc;
+}
+
+.quantity-input {
+    width: 60px;
+    text-align: center;
+    font-size: 18px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    margin: 0 10px;
+}
+
+.add-to-cart-button {
+    font-size: 20px;
+    padding: 12px 24px;
+    background-color: #78bcc4;
+    color: #f7f8f3;
+    border: none;
+    border-radius: 20px; /* Bo tròn nút "Add to Cart" */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-button:hover {
+    background-color: #589fa7;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #78bcc4;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #589fa7;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+/* Bakery Section */
+.section-title {
+    text-align: center;
+    margin-top: 80px;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+.bakery-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    background-color: #336666;
+    margin-bottom: 50px;
+}
+
+.bakery-item {
+    width: 240px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.bakery-item:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.bakery-item img {
+    width: 100%;
+    max-height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.bakery-item h3 {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* Beverage Section */
+
+.beverage .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+}
+
+.beverage-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    background-color: #336666;
+    margin-bottom: 100px;
+}
+
+.beverage-item {
+    width: 240px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.beverage-item:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.beverage-item img {
+    width: 100%;
+    max-height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.beverage-item h3 {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    color: #333;
+}
+.bakery{
+    background-color: #336666;
+}
+/* CSS cho phần About Us */
+.about-us {
+    padding: 40px 0;
+    text-align: center;
+    background-color: #f7f8f3;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 140px;
+}
+
+.about-us .container {
+    width: 85%;
+    margin: auto;
+}
+
+.about-us h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+}
+
+.about-us img {
+    width: 70%; /* Giảm kích thước hình ảnh xuống còn 70% của chiều rộng container */
+    height: auto;
+    max-width: 600px; /* Đặt giới hạn tối đa cho chiều rộng */
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.about-us .content {
+    text-align: left;
+}
+
+.about-us .content h2 {
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    font-family: 'Georgia', serif;
+}
+
+.about-us .content p {
+    color: #666;
+    font-size: 1.1em;
+    line-height: 1.6em;
+    text-align: justify;
+}
+
+/* CSS cho phần Thông tin liên hệ */
+.contact-info {
+    padding: 40px 0;
+    text-align: left;
+    background-color: #002c3e;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.contact-info .container {
+    width: 85%;
+    margin: auto;
+}
+
+.contact-info h2 {
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+}
+
+.contact-info p, .contact-info ul {
+    color: #666;
+    font-size: 1.1em;
+    line-height: 1.6em;
+    margin: 10px 0;
+}
+
+.contact-info a {
+    color: #ff6f61;
+    text-decoration: none;
+}
+
+.contact-info ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+.cart-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-top: 140px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-table th {
+    background-color: #f2f2f2;
+}
+
+.cart-table .cart-product-image {
+    max-width: 60px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.cart-table .item-price,
+.cart-table .item-total {
+    font-weight: bold;
+}
+
+.cart-table .quantity-input {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+}
+
+.cart-buttons {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.checkout-button,
+.continue-shopping {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.checkout-button:hover,
+.continue-shopping:hover {
+    background-color: #000;
+    color: #fff;
+}
+/* CSS cho Popup */
+.overlay-1 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkout-popup {
+    background-color: #fff; /* White background */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    width: 80%;
+    max-width: 600px; /* Limit the maximum width */
+    position: relative;
+}
+
+.checkout-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.checkout-left, .checkout-right {
+    width: 48%;
+}
+
+.checkout-right {
+    border-left: 1px solid #ddd;
+    padding-left: 20px;
+}
+
+.checkout-left h2, .checkout-right h2 {
+    margin-top: 0;
+}
+
+.checkout-left label, .checkout-left input, .checkout-left textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.checkout-left input, .checkout-left textarea {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.confirm-button, .cancel-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+
+    /* Đảm bảo hai nút nằm kế nhau */
+    display: inline-block;
+    margin-top: 10px;
+
+    /* Tạo khoảng cách giữa hai nút */
+    margin-right: 10px;
+}
+
+/* Loại bỏ margin bên phải của nút cuối cùng */
+.cancel-button {
+    margin-right: 0;
+    background-color: #ccc; /* Màu khác để phân biệt nút */
+}
+
+/* Hiệu ứng hover cho các nút */
+.confirm-button:hover, .cancel-button:hover {
+    opacity: 0.9;
+}
+
+.cancel-button {
+    background-color: #ccc;
+    margin-left: 10px;
+}
+
+.confirm-button:hover, .cancel-button:hover {
+    opacity: 0.9;
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.summary-table th, .summary-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.total-summary {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+}
+
+/* CSS cho Confirm Remove Popup */
+.overlay-2 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1100;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-remove-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.confirm-remove-popup {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+}
+
+.confirm-remove-popup h2 {
+    margin-top: 0;
+}
+
+.confirm-remove-popup p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
